@@ -1,0 +1,60 @@
+﻿<Window x:Class="Connecty.ColorPicker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Connecty"
+        mc:Ignorable="d"
+        Title="Farbauswahl" 
+        Height="85.837" 
+        Width="84.986" 
+        ResizeMode="NoResize" 
+        SizeToContent="WidthAndHeight" 
+        WindowStyle="ToolWindow"
+        KeyDown="Window_KeyDown" 
+        Icon="/Connecty;component/Resources/ConnectyIcon.ico"
+        Loaded="Window_Loaded"
+        Background="{DynamicResource MainBackground}">
+
+
+    <Border CornerRadius="0"  BorderThickness="2">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Row 1 -->
+            <Rectangle Fill="Magenta" Grid.Row="0" Grid.Column="0" Width="20" Height="20" Margin="2,2,2,2" MouseUp="ColorSelect_MouseUp"/>
+            <Rectangle Fill="LightGreen" Grid.Row="0" Grid.Column="1" Width="20" Height="20" Margin="2,2,2,2" MouseUp="ColorSelect_MouseUp"/>
+            <Rectangle Fill="LightBlue" Grid.Row="0" Grid.Column="2" Width="20" Height="20" Margin="2,2,2,2" MouseUp="ColorSelect_MouseUp"/>
+            <Rectangle Fill="LightGray" Grid.Row="0" Grid.Column="3" Width="20" Height="20" Margin="2,2,2,2" MouseUp="ColorSelect_MouseUp"/>
+
+            <!-- Row 2 -->
+            <Rectangle Fill="Red" Grid.Row="1" Grid.Column="0" Width="20" Height="20" Margin="2,2,2,2" MouseUp="ColorSelect_MouseUp"/>
+            <Rectangle Fill="Green" Grid.Row="1" Grid.Column="1" Width="20" Height="20" Margin="2,2,2,2" MouseUp="ColorSelect_MouseUp"/>
+            <Rectangle Fill="Blue" Grid.Row="1" Grid.Column="2" Width="20" Height="20" Margin="2,2,2,2" MouseUp="ColorSelect_MouseUp"/>
+            <Rectangle Fill="Gray" Grid.Row="1" Grid.Column="3" Width="20" Height="20" Margin="2,2,2,2" MouseUp="ColorSelect_MouseUp"/>
+
+            <!-- Row 3 -->
+            <Rectangle Fill="DarkRed" Grid.Row="2" Grid.Column="0" Width="20" Height="20" Margin="2,2,2,2" MouseUp="ColorSelect_MouseUp"/>
+            <Rectangle Fill="DarkGreen" Grid.Row="2" Grid.Column="1" Width="20" Height="20" Margin="2,2,2,2" MouseUp="ColorSelect_MouseUp"/>
+            <Rectangle Fill="DarkBlue" Grid.Row="2" Grid.Column="2" Width="20" Height="20" Margin="2,2,2,2" MouseUp="ColorSelect_MouseUp"/>
+            <Rectangle Fill="DarkGray" Grid.Row="2" Grid.Column="3" Width="20" Height="20" Margin="2,2,2,2" MouseUp="ColorSelect_MouseUp"/>
+
+            <!-- Row 4 -->
+            <Rectangle Fill="Yellow" Grid.Row="3" Grid.Column="0" Width="20" Height="20" Margin="2,2,2,2" MouseUp="ColorSelect_MouseUp"/>
+            <Rectangle Fill="Orange" Grid.Row="3" Grid.Column="1" Width="20" Height="20" Margin="2,2,2,2" MouseUp="ColorSelect_MouseUp"/>
+            <Rectangle Fill="Aqua" Grid.Row="3" Grid.Column="2" Width="20" Height="20" Margin="2,2,2,2" MouseUp="ColorSelect_MouseUp"/>
+            <Rectangle Fill="Black" Grid.Row="3" Grid.Column="3" Width="20" Height="20" Margin="2,2,2,2" MouseUp="ColorSelect_MouseUp"/>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,46 @@
+﻿<Page x:Class="Connecty.settingsPageRs232"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Connecty"
+      mc:Ignorable="d"
+      Title="settingsPageRs232" Height="205" Width="240">
+
+    <Grid Background="Transparent">
+        <StackPanel>
+            <StackPanel Margin="0,4,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Port"
+                       Foreground="{DynamicResource TextBoxForeground}"/>
+                <ComboBox x:Name="cbPort" HorizontalAlignment="Right" Width="80" SelectionChanged="cbPort_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Margin="0,4,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Baudrate"
+                       Foreground="{DynamicResource TextBoxForeground}"/>
+                <ComboBox x:Name="cbBaudrate" HorizontalAlignment="Right" Width="80"/>
+            </StackPanel>
+            <StackPanel Margin="0,4,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Parität" 
+                       Foreground="{DynamicResource TextBoxForeground}"/>
+                <ComboBox x:Name="cbParity" HorizontalAlignment="Right" Width="80"/>
+            </StackPanel>
+            <StackPanel Margin="0,4,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Datenbits" 
+                       Foreground="{DynamicResource TextBoxForeground}"/>
+                <TextBox x:Name="tbDataBits" HorizontalAlignment="Right" Height="28"  TextWrapping="Wrap" Width="80" TextChanged="tbDataBits_TextChanged"/>
+            </StackPanel>
+            <StackPanel Margin="0,4,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Stoppbits" 
+                       Foreground="{DynamicResource TextBoxForeground}"/>
+                <ComboBox x:Name="cbStoppbits" HorizontalAlignment="Right"  Width="80"/>
+            </StackPanel>
+            <StackPanel x:Name="expertUI">
+                <StackPanel  Margin="0,4,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Content="Zeichenverzugszeit [ms]" 
+                           Foreground="{DynamicResource TextBoxForeground}"/>
+                    <TextBox x:Name="tbReciveTimeOut" HorizontalAlignment="Right" Height="28"  TextWrapping="Wrap" Width="80" TextChanged="tbReciveTimeOut_TextChanged"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

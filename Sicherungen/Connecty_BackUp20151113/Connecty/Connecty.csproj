@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F275CF2A-04FB-4C70-9B81-932EE45ABC88}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Connecty</RootNamespace>
+    <AssemblyName>Connecty</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\ConnectyIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="UI\UI_ConnectionSettings\ConnectionSettings_UI.xaml.cs">
+      <DependentUpon>ConnectionSettings_UI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Connections\FunctionInterface.cs" />
+    <Compile Include="Simulation\Simulation_Job.cs" />
+    <Compile Include="Simulation\SimulationInterface.cs" />
+    <Compile Include="Connections\SingleConnectionInterface.cs" />
+    <Compile Include="Connections\MultiConnectionInterface.cs" />
+    <Compile Include="Helper\EventHandler.cs" />
+    <Compile Include="Helper\ObjectCopier.cs" />
+    <Compile Include="Simulation\Simulation_EnumType.cs" />
+    <Compile Include="Simulation\Simulation_ImportExport.cs" />
+    <Compile Include="UI\UI_Simulation\Simulation_UI.xaml.cs">
+      <DependentUpon>Simulation_UI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ColorPicker.xaml.cs">
+      <DependentUpon>ColorPicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UI_ConnectionSettings\settingsPageConnection.xaml.cs">
+      <DependentUpon>settingsPageConnection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UI_ConnectionSettings\settingsPageTcpIp.xaml.cs">
+      <DependentUpon>settingsPageTcpIp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UI_ConnectionSettings\settingsPageRs232.xaml.cs">
+      <DependentUpon>settingsPageRs232.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UI_ConnectionSettings\settingsPageConnectyInTheMiddle.xaml.cs">
+      <DependentUpon>settingsPageConnectyInTheMiddle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\ConnectySetings.cs" />
+    <Compile Include="SaveAndLoadSettings\LoadSave.cs" />
+    <Compile Include="Settings\ViewSettings.cs" />
+    <Compile Include="Settings\ApplicationSettings.cs" />
+    <Compile Include="Connections\ConnectionInterface.cs" />
+    <Compile Include="Connections\HW_Interfaces\TcpListenerEx.cs" />
+    <Compile Include="Helper\Converty.cs" />
+    <Compile Include="Helper\UserHelper.cs" />
+    <Compile Include="MsgLog\MsgData.cs" />
+    <Compile Include="MsgLog\MsgLogHandler.cs" />
+    <Compile Include="MsgLog\RingBuffer.cs" />
+    <Compile Include="Settings\ConnectionSettings.cs" />
+    <Compile Include="SaveAndLoadSettings\ObjectToSerialize.cs" />
+    <Compile Include="Connections\HW_Interfaces\rs232Connection.cs" />
+    <Compile Include="SaveAndLoadSettings\Serializer.cs" />
+    <Compile Include="Settings\tcpIpSettings.cs" />
+    <Compile Include="Connections\HW_Interfaces\TcpConnection.cs" />
+    <Compile Include="Settings\SingleConnection.cs" />
+    <Page Include="UI\UI_ConnectionSettings\ConnectionSettings_UI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\UI_Simulation\Simulation_UI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\ColorPicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\InfoDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UI\InfoDialog.xaml.cs">
+      <DependentUpon>InfoDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\rs232Settings.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="UI\UI_ConnectionSettings\settingsPageConnection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\UI_ConnectionSettings\settingsPageTcpIp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\UI_ConnectionSettings\settingsPageRs232.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\UI_ConnectionSettings\settingsPageConnectyInTheMiddle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <EmbeddedResource Include="Resources\ConnectyHilfe.chm" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\VersionHistory.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\networkadapterconfiguration.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PropertyIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ServiceStart_5723.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ServicesStop_5725.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\StatusAnnotations_Information_32xLG.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\UIControls\UIControls.csproj">
+      <Project>{7284ca41-7f1c-4956-912e-dccf8606cd56}</Project>
+      <Name>UIControls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\UIControls.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ConnectyIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Folder_6221.png" />
+    <Resource Include="Resources\save_16xLG.png" />
+    <Resource Include="Resources\save_16xMD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\action_add_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\action_remove_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RecalculatePageBreaks_268.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,67 @@
+﻿<Window x:Class="Connecty.Settings"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Verbindungs-Einstellungen" Height="398.584" Width="243.201" ResizeMode="NoResize" Icon="/Connecty;component/Resources/snake.ico" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+    <Grid>
+        <TabControl Name="tcTabControl" Margin="5,114,5,40">
+            <TabItem Header="RS232">
+                <Grid Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Margin="0,0,0,1">
+                    <StackPanel>
+                        <StackPanel Margin="0,10,10,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label Content="Port" />
+                            <ComboBox x:Name="cbPort" HorizontalAlignment="Right" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,4,10,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label Content="Baudrate" />
+                            <ComboBox x:Name="cbBaudrate" HorizontalAlignment="Right" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,4,10,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label Content="Parität" />
+                            <ComboBox x:Name="cbParity" HorizontalAlignment="Right" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,4,10,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label Content="Datenbits" />
+                            <TextBox x:Name="tbDataBits" HorizontalAlignment="Right" Height="23"  TextWrapping="Wrap" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,4,10,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label Content="Stoppbits" />
+                            <ComboBox x:Name="cbStoppbits" HorizontalAlignment="Right"  Width="120"/>
+                        </StackPanel>
+
+                        <StackPanel Margin="10,4,10,0" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                        </StackPanel>
+
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="TCP IP">
+                <Grid Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+                    <StackPanel>
+                        <StackPanel Margin="0,10,10,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label Content="Verbindung" />
+                            <ComboBox x:Name="cbClientServerSelect" HorizontalAlignment="Right" Width="120" SelectionChanged="cbClientServerSelect_SelectionChanged"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,4,10,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label Content="Port" />
+                            <TextBox x:Name="tbTcpIpPort" HorizontalAlignment="Right" Height="23"  TextWrapping="Wrap" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,4,10,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label Content="IP Adresse" />
+                            <TextBox x:Name="tbTcpIpAddress" HorizontalAlignment="Right" Height="23"  TextWrapping="Wrap" Width="120"/>
+                        </StackPanel>
+                        <StackPanel Margin="0,4,10,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label Content="Automatischer Wiederaufbau"/>
+                            <CheckBox Name="cbTcpAutomaticReconnect" Margin="0,7,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <StackPanel Margin="0,184,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="bAccept" Margin="0,0,5,5" Content="Übernehmen" HorizontalAlignment="Right" Width="78"  Height="25" VerticalAlignment="Bottom" Click="bAccept_Click"/>
+            <Button x:Name="bCancel" Margin="0,0,5,5" Content="Abbrechen" HorizontalAlignment="Right" Width="78"  Height="25" VerticalAlignment="Bottom" Click="bCancel_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

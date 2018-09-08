@@ -1,0 +1,593 @@
+﻿<Window x:Class="Connecty.MainWindow"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:Connecty"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:l="clr-namespace:UIControls;assembly=UIControls"
+        Title="Connecty" Height="340.744" 
+        Width="502.331" Icon="Resources/ConnectyIcon.ico" 
+        MinWidth="380" MinHeight="200" 
+        Closing="Window_Closing" 
+        Background="{DynamicResource MainBackground}" 
+        BorderThickness="0" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <!-- MenuItem  Template -->
+        <ControlTemplate x:Key="MenuItemControlTemplateTheme" TargetType="{x:Type MenuItem}">
+            <Border x:Name="templateRoot" 
+                    BorderBrush="{DynamicResource MainBackground}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    Background="{TemplateBinding Background}" 
+                    SnapsToDevicePixels="True">
+                <Grid VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter x:Name="Icon" 
+                                      Content="{TemplateBinding Icon}" 
+                                      ContentSource="Icon" 
+                                      HorizontalAlignment="Center" 
+                                      Height="16" 
+                                      Margin="3" 
+                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                      VerticalAlignment="Center" 
+                                      Width="16"/>
+                    <Path x:Name="GlyphPanel" 
+                          Data="F1M10,1.2L4.7,9.1 4.5,9.1 0,5.2 1.3,3.5 4.3,6.1 8.3,0 10,1.2z" 
+                          Fill="{TemplateBinding Foreground}" 
+                          FlowDirection="LeftToRight" 
+                          Margin="3" 
+                          Visibility="Collapsed" 
+                          VerticalAlignment="Center"/>
+                    <ContentPresenter ContentTemplate="{TemplateBinding HeaderTemplate}" 
+                                      Content="{TemplateBinding Header}" 
+                                      Grid.Column="1" 
+                                      ContentStringFormat="{TemplateBinding HeaderStringFormat}" 
+                                      ContentSource="Header" 
+                                      Margin="{TemplateBinding Padding}" 
+                                      RecognizesAccessKey="True" 
+                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    <Popup x:Name="PART_Popup" 
+                           AllowsTransparency="True" 
+                           Focusable="False" 
+                           IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" 
+                           PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}" 
+                           Placement="Bottom">
+                        <Border x:Name="SubMenuBorder" 
+                                BorderBrush="{DynamicResource MenuBackground}" 
+                                BorderThickness="1" 
+                                Background="{DynamicResource MenuBackground}" 
+                                Padding="2">
+                            <ScrollViewer x:Name="SubMenuScrollViewer" Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                <Grid RenderOptions.ClearTypeHint="Enabled">
+                                    <Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+                                        <Rectangle x:Name="OpaqueRect" 
+                                                   Fill="{Binding Background, ElementName=SubMenuBorder}" 
+                                                   Height="{Binding ActualHeight, ElementName=SubMenuBorder}" 
+                                                   Width="{Binding ActualWidth, ElementName=SubMenuBorder}"/>
+                                    </Canvas>
+                                    <Rectangle Fill="{DynamicResource MenuBackground}" HorizontalAlignment="Left" Margin="29,2,0,2" Width="1"/>
+                                    <ItemsPresenter x:Name="ItemsPresenter" 
+                                                    KeyboardNavigation.DirectionalNavigation="Cycle" 
+                                                    Grid.IsSharedSizeScope="True" 
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                                    KeyboardNavigation.TabNavigation="Cycle"/>
+                                </Grid>
+                            </ScrollViewer>
+                        </Border>
+                    </Popup>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsSuspendingPopupAnimation" Value="True">
+                    <Setter Property="PopupAnimation" TargetName="PART_Popup" Value="None"/>
+                </Trigger>
+                <Trigger Property="Icon" Value="{x:Null}">
+                    <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible"/>
+                    <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+                </Trigger>
+                <Trigger Property="IsHighlighted" Value="True">
+                    <Setter Property="Background" TargetName="templateRoot" Value="{DynamicResource MenuHighlightColor}"/>
+                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource MenuHighlightColor}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="TextElement.Foreground" TargetName="templateRoot" Value="#FF707070"/>
+                    <Setter Property="Fill" TargetName="GlyphPanel" Value="#FF707070"/>
+                </Trigger>
+                <Trigger Property="CanContentScroll" SourceName="SubMenuScrollViewer" Value="False">
+                    <Setter Property="Canvas.Top" TargetName="OpaqueRect" Value="{Binding VerticalOffset, ElementName=SubMenuScrollViewer}"/>
+                    <Setter Property="Canvas.Left" TargetName="OpaqueRect" Value="{Binding HorizontalOffset, ElementName=SubMenuScrollViewer}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="SubMenuItemControlTemplateTheme" TargetType="{x:Type MenuItem}">
+            <Border x:Name="templateRoot" 
+                    BorderBrush="{DynamicResource MenuBackground}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    Background="{TemplateBinding Background}" 
+                    SnapsToDevicePixels="True">
+                <Grid Margin="-1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition MinWidth="22" SharedSizeGroup="MenuItemIconColumnGroup" Width="Auto"/>
+                        <ColumnDefinition Width="13"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition SharedSizeGroup="MenuItemIGTColumnGroup" Width="Auto"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter x:Name="Icon" Content="{TemplateBinding Icon}" ContentSource="Icon" HorizontalAlignment="Center" Height="16" Margin="3" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" Width="16"/>
+                    <Border x:Name="GlyphPanel" 
+                            BorderBrush="#FF26A0DA" 
+                            BorderThickness="1" 
+                            Background="#3D26A0DA" 
+                            Height="22" 
+                            Margin="-1,0,0,0" 
+                            Visibility="Hidden" 
+                            VerticalAlignment="Center" 
+                            Width="22">
+                        <Path x:Name="Glyph" Data="{DynamicResource ŧ}" Fill="#FF212121" FlowDirection="LeftToRight" Height="11" Width="9"/>
+                    </Border>
+                    <ContentPresenter ContentTemplate="{TemplateBinding HeaderTemplate}" 
+                                      Content="{TemplateBinding Header}" 
+                                      Grid.Column="2" 
+                                      ContentStringFormat="{TemplateBinding HeaderStringFormat}" 
+                                      ContentSource="Header" 
+                                      HorizontalAlignment="Left" 
+                                      Margin="{TemplateBinding Padding}" 
+                                      RecognizesAccessKey="True" 
+                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                      VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="4" 
+                               Margin="{TemplateBinding Padding}" 
+                               Opacity="0.7" 
+                               Text="{TemplateBinding InputGestureText}" 
+                               VerticalAlignment="Center"/>
+                    <Path x:Name="RightArrow" 
+                          Grid.Column="5" 
+                          Data="M0,0L4,3.5 0,7z" 
+                          Fill="{DynamicResource MenuForeground}" 
+                          HorizontalAlignment="Left" 
+                          Margin="10,0,0,0" 
+                          VerticalAlignment="Center"/>
+                    <Popup x:Name="PART_Popup" 
+                           AllowsTransparency="True" 
+                           Focusable="False" 
+                           HorizontalOffset="-2" 
+                           IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" 
+                           PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}" 
+                           Placement="Right" 
+                           VerticalOffset="-3">
+                        <Border x:Name="SubMenuBorder" 
+                                BorderBrush="{DynamicResource MenuBackground}" 
+                                BorderThickness="1" 
+                                Background="{DynamicResource MenuBackground}" 
+                                Padding="2">
+                            <ScrollViewer x:Name="SubMenuScrollViewer" Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                <Grid RenderOptions.ClearTypeHint="Enabled">
+                                    <Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+                                        <Rectangle x:Name="OpaqueRect" 
+                                                   Fill="{Binding Background, ElementName=SubMenuBorder}" 
+                                                   Height="{Binding ActualHeight, ElementName=SubMenuBorder}" 
+                                                   Width="{Binding ActualWidth, ElementName=SubMenuBorder}"/>
+                                    </Canvas>
+                                    <Rectangle Fill="{DynamicResource MenuBackground}" HorizontalAlignment="Left" Margin="29,2,0,2" Width="1"/>
+                                    <ItemsPresenter x:Name="ItemsPresenter" 
+                                                    KeyboardNavigation.DirectionalNavigation="Cycle" 
+                                                    Grid.IsSharedSizeScope="True" 
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                                    KeyboardNavigation.TabNavigation="Cycle"/>
+                                </Grid>
+                            </ScrollViewer>
+                        </Border>
+                    </Popup>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsSuspendingPopupAnimation" Value="True">
+                    <Setter Property="PopupAnimation" TargetName="PART_Popup" Value="None"/>
+                </Trigger>
+                <Trigger Property="Icon" Value="{x:Null}">
+                    <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible"/>
+                    <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+                </Trigger>
+                <Trigger Property="IsHighlighted" Value="True">
+                    <Setter Property="Background" TargetName="templateRoot" Value="{DynamicResource MenuHighlightColor}"/>
+                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource MenuHighlightColor}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="TextElement.Foreground" TargetName="templateRoot" Value="#FF707070"/>
+                    <Setter Property="Fill" TargetName="Glyph" Value="#FF707070"/>
+                    <Setter Property="Fill" TargetName="RightArrow" Value="#FF707070"/>
+                </Trigger>
+                <Trigger Property="CanContentScroll" SourceName="SubMenuScrollViewer" Value="False">
+                    <Setter Property="Canvas.Top" TargetName="OpaqueRect" Value="{Binding VerticalOffset, ElementName=SubMenuScrollViewer}"/>
+                    <Setter Property="Canvas.Left" TargetName="OpaqueRect" Value="{Binding HorizontalOffset, ElementName=SubMenuScrollViewer}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="SubMenuItemControlTemplateSingleEntry" TargetType="{x:Type MenuItem}">
+            <Border x:Name="templateRoot" 
+                    BorderBrush="{DynamicResource MenuBackground}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    Background="{TemplateBinding Background}" 
+                    SnapsToDevicePixels="True">
+                <Grid Margin="-1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition MinWidth="22" SharedSizeGroup="MenuItemIconColumnGroup" Width="Auto"/>
+                        <ColumnDefinition Width="13"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition SharedSizeGroup="MenuItemIGTColumnGroup" Width="Auto"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter x:Name="Icon" 
+                                      Content="{TemplateBinding Icon}" 
+                                      ContentSource="Icon" 
+                                      HorizontalAlignment="Center" 
+                                      Height="16" 
+                                      Margin="3" 
+                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                      VerticalAlignment="Center" 
+                                      Width="16"/>
+                    <Border x:Name="GlyphPanel" 
+                            BorderBrush="{DynamicResource MenuBackground}" 
+                            BorderThickness="1" 
+                            Background="{DynamicResource MenuBackground}" 
+                            ClipToBounds="False" 
+                            HorizontalAlignment="Center" 
+                            Height="22" 
+                            Margin="-1,0,0,0" 
+                            Visibility="Hidden" 
+                            VerticalAlignment="Center" 
+                            Width="22">
+                        <Path x:Name="Glyph" 
+                              Data="F1M10,1.2L4.7,9.1 4.5,9.1 0,5.2 1.3,3.5 4.3,6.1 8.3,0 10,1.2z" 
+                              Fill="{DynamicResource MenuForeground}" 
+                              FlowDirection="LeftToRight" 
+                              Height="11" 
+                              Width="10"/>
+                    </Border>
+                    <ContentPresenter x:Name="menuHeaderContainer" 
+                                      ContentTemplate="{TemplateBinding HeaderTemplate}" 
+                                      Content="{TemplateBinding Header}" 
+                                      Grid.Column="2" 
+                                      ContentStringFormat="{TemplateBinding HeaderStringFormat}" 
+                                      ContentSource="Header" 
+                                      HorizontalAlignment="Left" 
+                                      Margin="{TemplateBinding Padding}" 
+                                      RecognizesAccessKey="True" 
+                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                      VerticalAlignment="Center"/>
+                    <TextBlock x:Name="menuGestureText" 
+                               Grid.Column="4" 
+                               Margin="{TemplateBinding Padding}" 
+                               Opacity="0.7" 
+                               Text="{TemplateBinding InputGestureText}" 
+                               VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Icon" Value="{x:Null}">
+                    <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Visibility" TargetName="GlyphPanel" Value="Visible"/>
+                    <Setter Property="Visibility" TargetName="Icon" Value="Collapsed"/>
+                </Trigger>
+                <Trigger Property="IsHighlighted" Value="True">
+                    <Setter Property="Background" TargetName="templateRoot" Value="{DynamicResource MenuHighlightColor}"/>
+                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource MenuHighlightColor}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="TextElement.Foreground" TargetName="templateRoot" Value="#FF707070"/>
+                    <Setter Property="Fill" TargetName="Glyph" Value="#FF707070"/>
+                </Trigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsHighlighted" Value="True"/>
+                        <Condition Property="IsEnabled" Value="False"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Background" TargetName="templateRoot" Value="{DynamicResource MenuHighlightColor}"/>
+                    <Setter Property="BorderBrush" TargetName="templateRoot" Value="{DynamicResource MenuHighlightColor}"/>
+                </MultiTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+    </Window.Resources>
+
+    <Window.CommandBindings>
+        <CommandBinding Command="Help" Executed="HelpExecuted" />
+        <CommandBinding Command="Open" Executed="OpenExecuted" />
+        <CommandBinding Command="Save" Executed="SaveExecuted" />
+        <CommandBinding Command="Close" Executed="CloseExecuted" />
+    </Window.CommandBindings>
+
+
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo x:Name="taskBarItemInfo1">
+            <TaskbarItemInfo.ThumbnailClipMargin>
+                <Thickness Left="0" Top="0" Bottom="0" Right="0"></Thickness>
+            </TaskbarItemInfo.ThumbnailClipMargin>
+            <TaskbarItemInfo.ThumbButtonInfos>
+                <ThumbButtonInfoCollection>
+                    <ThumbButtonInfo x:Name="tbConnect" 
+                                    DismissWhenClicked="False" 
+                                    Description="Verbindung herstellen" 
+                                    ImageSource="/Connecty;component/Resources/ServiceStart_5723.ico"
+                                    Click="tbConnect_Click">
+                    </ThumbButtonInfo>
+                    <ThumbButtonInfo x:Name="tbDisconnect" 
+                                      DismissWhenClicked="False" 
+                                      Description="Verbindung trennen" 
+                                      ImageSource="/Connecty;component/Resources/ServicesStop_5725.ico"
+                                      Click="tbDisconnect_Click">
+                    </ThumbButtonInfo>
+                </ThumbButtonInfoCollection>
+            </TaskbarItemInfo.ThumbButtonInfos>
+        </TaskbarItemInfo>
+    </Window.TaskbarItemInfo>
+
+    <Grid>
+
+        <!-- Menu Bar -->
+        <Menu Height="22" VerticalAlignment="Top" Background="{DynamicResource MainBackground}"  Foreground="{DynamicResource MainForeground}">
+            <MenuItem  Header="Ablage" Template="{DynamicResource MenuItemControlTemplateTheme}">
+                <MenuItem x:Name="menuItemOpenSettings" 
+                          Header="Einstellungen laden" 
+                          Command="Open" 
+                          Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}"/>
+                <MenuItem x:Name="menuItemSaveSettings" 
+                          Header="Einstellungen Speichern" 
+                          Command="Save" 
+                          Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}"/>
+                <Separator Foreground="{DynamicResource MainForeground}" ></Separator>
+                <MenuItem x:Name="menuItemSaveLog" 
+                          Header="Log Speichern" 
+                          Click="menuItemSaveLog_Click"
+                          Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}"/>
+                <Separator Foreground="{DynamicResource MainForeground}" ></Separator>
+                <MenuItem x:Name="menuItemBeenden" 
+                          Header="Beenden" 
+                          Command="Close" 
+                          InputGestureText="ALT+F4" 
+                          Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}"/>
+            </MenuItem>
+            <MenuItem Header="Verbindungen" Template="{DynamicResource MenuItemControlTemplateTheme}">
+                <MenuItem x:Name="menuItemEinstellungen" Header="Parameter" InputGestureText="STRG+P" Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}">
+                    <MenuItem.Icon>
+                        <Image Source="/Connecty;component/Resources/networkadapterconfiguration.ico" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="menuItemVerbinden" Header="Verbinden" InputGestureText="F11" Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}">
+                    <MenuItem.Icon>
+                        <Image Source="/Connecty;component/Resources/ServiceStart_5723.ico" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="menuItemTrennen" Header="Trennen"  InputGestureText="F12" Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}">
+                    <MenuItem.Icon>
+                        <Image Source="/Connecty;component/Resources/ServicesStop_5725.ico" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem x:Name="menuItemOptions" Header="Optionen" Template="{DynamicResource MenuItemControlTemplateTheme}">
+                <MenuItem x:Name="menuItemView" Header="Ansicht" Template="{DynamicResource SubMenuItemControlTemplateTheme}" >
+                    <MenuItem x:Name="menuItem_ASCII_Zeichen" Header="ASCII Zeichen" IsCheckable="true" Click="menuItem_ViewRepresentationChange_Click" Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}">
+                        <MenuItem.Resources>
+                            <sys:Int32 x:Key="ViewRepresentation" >0</sys:Int32>
+                        </MenuItem.Resources>
+                    </MenuItem>
+                    <MenuItem x:Name="menuItem_HEX" Header="Hex" IsCheckable="true" Click="menuItem_ViewRepresentationChange_Click" Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}">
+                        <MenuItem.Resources>
+                            <sys:Int32 x:Key="ViewRepresentation" >1</sys:Int32>
+                        </MenuItem.Resources>
+                    </MenuItem>
+                    <MenuItem x:Name="menuItem_DEC" Header="Dez" IsCheckable="true" Click="menuItem_ViewRepresentationChange_Click" Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}">
+                        <MenuItem.Resources>
+                            <sys:Int32 x:Key="ViewRepresentation" >2</sys:Int32>
+                        </MenuItem.Resources>
+                    </MenuItem>
+                    <MenuItem x:Name="menuItem_BIN" 
+                              Header="Bin" 
+                              IsCheckable="true" 
+                              Click="menuItem_ViewRepresentationChange_Click" 
+                              Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}">
+                        <MenuItem.Resources>
+                            <sys:Int32 x:Key="ViewRepresentation" >3</sys:Int32>
+                        </MenuItem.Resources>
+                    </MenuItem>
+                    <Separator></Separator>
+                    <MenuItem x:Name="menuItem_TimeStamp" 
+                              Header="Zeitstempel" 
+                              IsCheckable="true" 
+                              Click="menuItem_TimeStamp_Click" 
+                              Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}"/>
+                    <Separator></Separator>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Foreground="{DynamicResource MainForeground}">Zoom</Label>
+                        <Slider x:Name="sScaleSlider" 
+                            Width="150"  
+                            Minimum="1" Maximum="2" 
+                            TickFrequency="0.1" TickPlacement="TopLeft" IsSnapToTickEnabled="True" 
+                            ValueChanged="sScaleSlider_ValueChanged"
+                            Foreground="{DynamicResource MainForeground}"/>
+                        <Label x:Name="lScaleValue" Foreground="{DynamicResource MainForeground}"></Label>
+                    </StackPanel>
+                </MenuItem>
+                <MenuItem x:Name="menuItem_MsgLogReset" Header="Historie löschen" InputGestureText="STRG+L" Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}"/>
+                <MenuItem x:Name="menuItem_ApplicationSettings" Header="Einstellungen" InputGestureText="STRG+," Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}"/>
+                <MenuItem x:Name="menuItem_QuickButtons" Header="QuickButtons" Template="{DynamicResource SubMenuItemControlTemplateTheme}">
+                    <MenuItem x:Name="menuItem_AddQuickButtons" Header="Hinzufügen" Click="menuItem_AddQuickButtons_Click" Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}"/>
+                    <MenuItem x:Name="menuItem_LoadQuickButtons" Header="Laden" Click="menuItem_LoadQuickButtons_Click" Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}"/>
+                    <MenuItem x:Name="menuItem_SafeQuickButtons" Header="Speichern" Click="menuItem_SafeQuickButtons_Click" Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}"/>
+                    <MenuItem x:Name="menuItem_SafeAsQuickButtons" Header="Speichern unter" Click="menuItem_SafeAsQuickButtons_Click" Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}"/>
+                </MenuItem>
+
+            </MenuItem>
+            <MenuItem x:Name="menuSimulation" Header="Simulation" Template="{DynamicResource MenuItemControlTemplateTheme}">
+                <MenuItem x:Name ="menuItemShowSimulationWindow"  
+                          Header="Neue Simulation öffnen" 
+                          InputGestureText="STRG+N" 
+                          Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}"/>
+                <MenuItem x:Name ="menuItemOpenExistingSimulationWindow"  
+                          Click="menuItemOpenExistingSimulationWindow_Click"
+                          Header="Vorhandene Simulation öffnen"  
+                          Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}"/>
+                <MenuItem x:Name ="menuItemCloseAllSimulations"  
+                          Header="Alle Simulationen Schließen"  
+                          Click="menuItemCloseAllSimulations_Click" 
+                          IsEnabled="False" 
+                          Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}"/>
+                <Separator></Separator>
+            </MenuItem>
+            <MenuItem Header="Hilfe" Template="{DynamicResource MenuItemControlTemplateTheme}">
+                <MenuItem x:Name="menuItemAbout" 
+                          Header="Über Connecty"  
+                          Click="menuItemAbout_Click" 
+                          Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}">
+                    <MenuItem.Icon>
+                        <Viewbox>
+                            <Image Height="20" Width="20" Source="/Connecty;component/Resources/StatusAnnotations_Information_32xLG.png" />
+                        </Viewbox>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="menuItemHelp" 
+                          Header="Hilfe Aufrufen"   
+                          Command="Help" 
+                          Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}">
+                </MenuItem>
+                <MenuItem x:Name="menuItemCheckForUpdates" 
+                          Header="Auf Updates prüfen"  
+                          Click="menuItemCheckForUpdates_Click" 
+                          Template="{DynamicResource SubMenuItemControlTemplateSingleEntry}"/>
+            </MenuItem>
+            <MenuItem   Name="miNewVersionAivailable"
+                        Header="New Version"
+                        Click="miNewVersionAivailable_Click"
+                        Template="{DynamicResource MenuItemControlTemplateTheme}"
+                        Foreground="Red"
+                        FontStyle="Italic"
+                        HorizontalAlignment="Right">
+            </MenuItem>
+        </Menu>
+
+        <!-- Toolbar -->
+        <ToolBarTray Margin="5,22,5,0" Height="25" VerticalAlignment="Top" Background="{DynamicResource MainBackground}" >
+            <ToolBar Name="tbToolBar" 
+                     ToolBarTray.IsLocked="True" 
+                     
+                     Loaded="ToolBar_Loaded" 
+                     Background="{DynamicResource MainBackground}" 
+                     Foreground="{DynamicResource MainForeground}">
+
+                <!-- Connection -->
+                <Button Name="toolBarConnect" ToolTip="Verbindung Herstellen/Starten 'F11'" ToolBar.OverflowMode="Never">
+                    <Image Source="/Connecty;component/Resources/ServiceStart_5723.ico"  />
+                </Button>
+                <Button Name="toolBarDisconnect" ToolTip="Verbindung Trennen 'F12'" ToolBar.OverflowMode="Never">
+                    <Image Source="/Connecty;component/Resources/ServicesStop_5725.ico"   />
+                </Button>
+                <Separator ToolBar.OverflowMode="Never"/>
+                <Button Name="toolBarConnectionSettings" ToolTip="Verbindungseinstellungen 'STRG+P'" ToolBar.OverflowMode="Never">
+                    <Image Source="/Connecty;component/Resources/networkadapterconfiguration.ico"   />
+                </Button>
+                <Separator ToolBar.OverflowMode="Never"/>
+                <l:SearchTextBox Name="stbSearchBox" 
+                                 LabelText="Suche..." 
+                                 Width="125" 
+                                 Height="21" 
+                                 SearchMode="Instant" 
+                                 Search="SearchTextBox_Search"  
+                                 BorderBrush="{DynamicResource TextBoxBorderBrush}" 
+                                 Margin="0,1.5,0,-0.5" 
+                                 Background="{DynamicResource TextBoxBackground}" 
+                                 Foreground="{DynamicResource TextBoxForeground}"
+                                 ToolBar.OverflowMode="Never"/>
+
+                <!-- Collor Picker -->
+                <Separator ToolBar.OverflowMode="Never"/>
+                <local:CollorPickerControl x:Name="SendRecieColorControl" 
+                                           TelegrammColorChange="SendReciveColorChanged_Event"
+                                           ToolBar.OverflowMode="Never"/>
+
+                <!-- Quick Button -->
+                <Separator ToolBar.OverflowMode="Never"></Separator>
+                <local:QuickButtonsControl x:Name="QuickButtonsControl" 
+                                           MsgSendRecived="quickButtonSendMsg"
+                                           ToolBar.OverflowMode="AsNeeded"/>
+
+            </ToolBar>
+        </ToolBarTray>
+
+
+        <!-- Message Box with all Informations -->
+        <Border Margin="5,52,5,58" 
+                BorderBrush="{DynamicResource MainBackground}" 
+                BorderThickness="1">
+            <ScrollViewer Name="svInOutData" BorderBrush="{DynamicResource TextBoxBackground}" VerticalScrollBarVisibility="Auto">
+                <RichTextBox Name="rtbInOutData" 
+                             VerticalScrollBarVisibility="Disabled" 
+                             UseLayoutRounding="False" 
+                             BorderBrush="{DynamicResource TextBoxBackground}" 
+                             Background="{DynamicResource TextBoxBackground}" 
+                             Foreground="{DynamicResource TextBoxForeground}">
+                    <RichTextBox.Resources>
+                        <Style TargetType="{x:Type Paragraph}">
+                            <Setter Property="Margin" Value="0"/>
+                        </Style>
+                    </RichTextBox.Resources>
+                    <RichTextBox.LayoutTransform>
+                        <ScaleTransform ScaleX="{Binding ElementName=sScaleSlider, Path=Value}" ScaleY="{Binding ElementName=sScaleSlider, Path=Value}"/>
+                    </RichTextBox.LayoutTransform>
+                </RichTextBox>
+            </ScrollViewer>
+        </Border>
+
+        <!-- Controls  -->
+        <Button x:Name="bSend" 
+                Content="Senden" 
+                HorizontalAlignment="Left" 
+                Margin="5,0,0,25" 
+                VerticalAlignment="Bottom" 
+                Width="75" 
+                Height="28" 
+                Click="Send_Data" 
+                Padding="1"/>
+        <TextBox x:Name="tbSendData" 
+                 Height="28" 
+                 Margin="85,0,5,25"
+                 TextWrapping="NoWrap" 
+                 Text="TextBox" 
+                 VerticalAlignment="Bottom" 
+                 PreviewKeyDown="SendData_KeyDown" 
+                 VerticalScrollBarVisibility="Disabled" 
+                 HorizontalScrollBarVisibility="Auto" 
+                 ScrollViewer.CanContentScroll="True" 
+                 LayoutUpdated="tbSendData_LayoutUpdated"/>
+
+        <!-- Status Bar -->
+        <StatusBar x:Name="sbStatusBar" VerticalAlignment="Bottom" Background="{DynamicResource MainBackground}" Foreground="{DynamicResource MainForeground}">
+
+            <!-- Connection State -->
+            <TextBlock x:Name="tbConnection1State" Visibility="Collapsed" Height="17" Background="Yellow"> Verbindungsaufbau...</TextBlock>
+            <TextBlock x:Name="tbConnection2State" Visibility="Collapsed" Height="17" Background="Yellow"> Verbindungsaufbau...</TextBlock>
+
+            <!-- View Representation -->
+            <Separator></Separator>
+            <TextBlock x:Name="tbViewState" Text="ASCII"/>
+
+            <!-- Name of the Send Direction -->
+            <Separator x:Name="StatusBar_SendToSeperator"></Separator>
+            <TextBlock x:Name="StatusBar_SendToTextBlock" Text="Senden an: Verbindung 1" MouseLeftButtonUp="tbSendTo_MouseLeftButtonUp"/>
+
+
+        </StatusBar>
+    </Grid>
+
+</Window>

@@ -1,0 +1,171 @@
+﻿<Window x:Class="Connecty.MainWindow"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:l="clr-namespace:UIControls;assembly=UIControls"
+        Title="Connecty" Height="340.744" 
+        Width="502.331" Icon="Resources/ConnectyIcon.ico" 
+        MinWidth="380" MinHeight="200" 
+        Closing="Window_Closing" Background="DarkGray" BorderThickness="0">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="Help" Executed="HelpExecuted" />
+        <CommandBinding Command="Open" Executed="OpenExecuted" />
+        <CommandBinding Command="Save" Executed="SaveExecuted" />
+        <CommandBinding Command="Close" Executed="CloseExecuted" />
+    </Window.CommandBindings>
+
+    <Window.Resources>
+        <Color x:Key="BackGround">#FFFFFFFF</Color>
+    </Window.Resources>
+
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo x:Name="taskBarItemInfo1">
+            <TaskbarItemInfo.ThumbnailClipMargin>
+                <Thickness Left="0" Top="0" Bottom="0" Right="0"></Thickness>
+            </TaskbarItemInfo.ThumbnailClipMargin>
+            <TaskbarItemInfo.ThumbButtonInfos>
+                <ThumbButtonInfoCollection>
+                    <ThumbButtonInfo x:Name="tbConnect" 
+                                    DismissWhenClicked="False" 
+                                    Description="Verbindung herstellen" 
+                                    ImageSource="/Connecty;component/Resources/ServiceStart_5723.ico"
+                                    Click="tbConnect_Click">
+                    </ThumbButtonInfo>
+                    <ThumbButtonInfo x:Name="tbDisconnect" 
+                                      DismissWhenClicked="False" 
+                                      Description="Verbindung trennen" 
+                                      ImageSource="/Connecty;component/Resources/ServicesStop_5725.ico"
+                                      Click="tbDisconnect_Click">
+                    </ThumbButtonInfo>
+                </ThumbButtonInfoCollection>
+            </TaskbarItemInfo.ThumbButtonInfos>
+        </TaskbarItemInfo>
+    </Window.TaskbarItemInfo>
+
+    <Grid>
+        <Menu Height="22" VerticalAlignment="Top" Background="DarkGray">
+            <MenuItem  Header="Ablage" >
+                <MenuItem x:Name="menuItemOpenSettings" Header="Einstellungen laden" Command="Open" />
+                <MenuItem x:Name="menuItemSaveSettings" Header="Einstellungen Speichern" Command="Save"/>
+                <Separator></Separator>
+                <MenuItem x:Name="menuItemBeenden" Header="Beenden" Command="Close" InputGestureText="ALT+F4"/>
+            </MenuItem>
+            <MenuItem Header="Verbindungen">
+                <MenuItem x:Name="menuItemEinstellungen" Header="Parameter" InputGestureText="STRG+P">
+                    <MenuItem.Icon>
+                        <Image Source="/Connecty;component/Resources/networkadapterconfiguration.ico" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="menuItemVerbinden" Header="Verbinden" InputGestureText="F11">
+                    <MenuItem.Icon>
+                        <Image Source="/Connecty;component/Resources/ServiceStart_5723.ico" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="menuItemTrennen" Header="Trennen"  InputGestureText="F12">
+                    <MenuItem.Icon>
+                        <Image Source="/Connecty;component/Resources/ServicesStop_5725.ico" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem x:Name="menuItemOptions" Header="Optionen">
+                <MenuItem x:Name="menuItemView" Header="Ansicht">
+                    <MenuItem x:Name="menuItem_ASCII_Zeichen" Header="ASCII Zeichen" IsCheckable="true" Click="menuItem_ViewRepresentationChange_Click">
+                        <MenuItem.Resources>
+                            <sys:Int32 x:Key="ViewRepresentation" >0</sys:Int32>
+                        </MenuItem.Resources>
+                    </MenuItem>
+                    <MenuItem x:Name="menuItem_HEX" Header="Hex" IsCheckable="true" Click="menuItem_ViewRepresentationChange_Click">
+                        <MenuItem.Resources>
+                            <sys:Int32 x:Key="ViewRepresentation" >1</sys:Int32>
+                        </MenuItem.Resources>
+                    </MenuItem>
+                    <MenuItem x:Name="menuItem_DEC" Header="Dez" IsCheckable="true" Click="menuItem_ViewRepresentationChange_Click">
+                        <MenuItem.Resources>
+                            <sys:Int32 x:Key="ViewRepresentation" >2</sys:Int32>
+                        </MenuItem.Resources>
+                    </MenuItem>
+                    <MenuItem x:Name="menuItem_BIN" Header="Bin" IsCheckable="true" Click="menuItem_ViewRepresentationChange_Click">
+                        <MenuItem.Resources>
+                            <sys:Int32 x:Key="ViewRepresentation" >3</sys:Int32>
+                        </MenuItem.Resources>
+                    </MenuItem>
+
+                    <Separator></Separator>
+                    <MenuItem x:Name="menuItem_TimeStamp" Header="Zeitstempel" HorizontalAlignment="Left" IsCheckable="true" Click="menuItem_TimeStamp_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="menuItem_MsgLogReset" Header="Historie löschen" InputGestureText="STRG+R"/>
+            </MenuItem>
+            <MenuItem x:Name="menuSimulation" Header="Simulation">
+                <MenuItem x:Name ="menuItemShowSimulationWindow"  Header="Neue Simulation öffnen" HorizontalAlignment="Left" InputGestureText="STRG+N"/>
+                <MenuItem x:Name ="menuItemCloseAllSimulations"  Header="Alle Simulationen Schließen" HorizontalAlignment="Left" Click="menuItemCloseAllSimulations_Click" IsEnabled="False"/>
+                <Separator></Separator>
+            </MenuItem>
+
+            <MenuItem Header="Hilfe">
+                <MenuItem x:Name="menuItemAbout" Header="Über Connecty" HorizontalAlignment="Left" Click="menuItemAbout_Click">
+                    <MenuItem.Icon>
+                        <Image Height="20" Width="20" Source="/Connecty;component/Resources/StatusAnnotations_Information_32xLG.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem x:Name="menuItemHelp" Header="Hilfe Aufrufen" HorizontalAlignment="Left"  Command="Help">
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <ToolBarTray Margin="5,22,5,0" Height="25" VerticalAlignment="Top" Background="DarkGray">
+            <ToolBar ToolBarTray.IsLocked="True" Loaded="ToolBar_Loaded" Background="DarkGray">
+                <Button Name="toolBarConnect" ToolTip="Verbindung Herstellen/Starten 'F11'" >
+                    <Image Source="/Connecty;component/Resources/ServiceStart_5723.ico"  />
+                </Button>
+                <Button Name="toolBarDisconnect" ToolTip="Verbindung Trennen 'F12'" >
+                    <Image Source="/Connecty;component/Resources/ServicesStop_5725.ico"   />
+                </Button>
+                <Separator></Separator>
+                <Button Name="toolBarConnectionSettings" ToolTip="Verbindungseinstellungen 'STRG+P'" >
+                    <Image Source="/Connecty;component/Resources/networkadapterconfiguration.ico"   />
+                </Button>
+                <Separator ></Separator>
+                <l:SearchTextBox Name="stbSearchBox" LabelText="Suche..." Width="125" Height="21" SearchMode="Instant" Search="SearchTextBox_Search"  BorderBrush="Black" SelectionBrush="#FFA8A8A8"></l:SearchTextBox>
+                <Separator ></Separator>
+                <TextBlock Name="tbSendColor" Text="Gesendet" Foreground="Blue" Padding="2" MouseUp="tbSendReciveColor_MouseUp">
+                    <TextBlock.Resources>
+                        <sys:Int32 x:Key="SendReciveColorSelection" >1</sys:Int32>
+                    </TextBlock.Resources>
+                </TextBlock>
+                <Separator ></Separator>
+                <TextBlock Name="tbReciveColor" Text="Empfangen" Foreground="Magenta" Padding="2" MouseUp="tbSendReciveColor_MouseUp">
+                    <TextBlock.Resources>
+                        <sys:Int32 x:Key="SendReciveColorSelection" >2</sys:Int32>
+                    </TextBlock.Resources>
+                </TextBlock>
+                <Separator ></Separator>
+            </ToolBar>
+        </ToolBarTray>
+        <RichTextBox Name="rtbInOutData" Margin="5,52,5,58" VerticalScrollBarVisibility="Auto" UseLayoutRounding="False" BorderBrush="Black" SelectionBrush="#FFA8A8A8">
+            <RichTextBox.Resources>
+                <Style TargetType="{x:Type Paragraph}">
+                    <Setter Property="Margin" Value="0"/>
+                </Style>
+            </RichTextBox.Resources>
+        </RichTextBox>
+        <Button x:Name="bSend" Content="Senden" HorizontalAlignment="Left" Margin="5,0,0,25" VerticalAlignment="Bottom" Width="75" Height="28" Click="Send_Data" Padding="1"  BorderBrush="Black" Background="#FFF1F1F1"/>
+
+        <TextBox x:Name="tbSendData" Height="28" Margin="85,0,5,25" BorderBrush="Black" TextWrapping="NoWrap" Text="TextBox" VerticalAlignment="Bottom" PreviewKeyDown="SendData_KeyDown" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True" LayoutUpdated="tbSendData_LayoutUpdated" SelectionBrush="#FFA8A8A8"/>
+        <StatusBar x:Name="sbStatusBar" VerticalAlignment="Bottom" Background="DarkGray">
+            <TextBlock x:Name="tbConnection1State" Visibility="Collapsed" Height="17" Background="Yellow"> Verbindungsaufbau...</TextBlock>
+            <TextBlock x:Name="tbConnection2State" Visibility="Collapsed" Height="17" Background="Yellow"> Verbindungsaufbau...</TextBlock>
+
+            <Separator></Separator>
+            <TextBlock x:Name="tbViewState" Text="ASCII"/>
+            <Separator x:Name="StatusBar_SendToSeperator"></Separator>
+            <TextBlock x:Name="StatusBar_SendToTextBlock" Text="Senden an: Verbindung 1" MouseLeftButtonUp="tbSendTo_MouseLeftButtonUp"/>
+
+            <!--
+            <Separator></Separator>
+            -->
+
+        </StatusBar>
+    </Grid>
+
+</Window>

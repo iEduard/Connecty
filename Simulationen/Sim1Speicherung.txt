@@ -1,0 +1,7 @@
+#StartAblauf
+
+	WarteAuf(Hallo Welt)
+	Sende(This is my Dream)
+	WarteAuf(Really)
+
+#EndeAblauf

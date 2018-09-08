@@ -1,0 +1,123 @@
+﻿---------------------------------
+v1.0.9
+---------------------------------
+Neue Funktionen...
+-Das reicht erst einmal mit den neuen Funktionen. jetzt werden die bestehenden ert einmal auf vordermann gebracht.
+
+Gefundene und behobene Käfer...
+-Simulationsfenster
+	-Die Jobs können nun nicht mehr fälschlicherweise nach Jobs sortiert werden
+	-Das Editieren der Jobs wird nun automatisch beendet und übernommen wenn die Simulation gestartet oder gespeichert wird.
+-Verbindungseinstellungen
+	-RS232 Settings: Bei fehlerhaften Einträgen ist das Programm abgestürzt
+	-Schnüffler: Ungültige Eingaben führten zum Absturz des Programms
+	-Bei der überprüfung der Daten wird nun sauber gearbeitet. So das wir nicht dauernd in eine Exception reinlaufen wenn falsche Daten enthalten sind oder die Ansicht neu geladen wird
+
+
+---------------------------------
+v1.0.8
+---------------------------------
+Neue Funktionen...
+-Simulation hinzugefügt. Ja die Simulation ist jetzt Teil von Connecty.. Juhu...
+-Hilfedatei aktualisiert
+
+Gefundene Käfer...
+-Die UI der Verbindungseinstellungen wurde überarbeitet. Hier sollte es nun etwas besser laufen.
+-Das Ändern der Verbindungseinstellungen wird nun untersagt wenn eine Verbindung bereits aufgebaut ist.
+
+---------------------------------
+v1.0.7
+---------------------------------
+Neue Funktionen...
+-
+
+Gefundene Käfer...
+-Die Verbindungen von Seriellen Verbindung lief nicht ganz reibungslos... (Es wurden die Daten nicht an das Log Fenster weitergeleitet)
+-Fenster Position und größe bei fehlenden Default Einstellungen wurde nicht sauber Initialisiert. Nun werden die größe und die Position sinvoll vorgegeben.
+
+---------------------------------
+v1.0.6
+---------------------------------
+Neue Funktionen...
+-Short Cuts eingebunden. Für das Verbinden Trennen Löschen und so weiter
+-Das ändern der Ansicht geht nun sobald das Fenster angewählt ist über die Tastenkombination ALT+Pfeiltasten links und rechts
+-Die Einstellungen lassen sich nun auch speichern bzw. laden. (Dank an E.Küchler)
+-Sende und Empfangs Farben können nun über eine kleine Farbauswahl eingestellt werden
+-TCP verbindungen können nun Automatisch wieder verbunden werden
+-Komplettes neu Design des Parameter Fensters für die Verbindungseinstellungen...
+	-Vorbereitung für Connecty in the Middle und dem Simulanten
+	-Die EIngabefelder mit ungültigen Eingaben werden nun Rot hinterlegt
+	-Der Tabulator kann nun verwendet werden umm alles mit der Tastatur zu steuern
+	-Die Tasten ESC und ENTER können nun genutzt werden um den Dialog zu Schließen bzw. die EIngabe zu übernehmen
+-Tool Tips der ToolBar geben nun auch Aufschluss über den dahinter liegenden ShortCut
+-Die Menüfenster werden nun immer über dem jeweiligen Connecty Fenster Positioniert.
+-Die Connecty in the Middle Funktion implementiert. Jetzt kann Connecty als Zwischenstück zwischen zwei Verbindungen genutzt werden.
+-Die größe des Fensters sowie die Position des Fensters werdennun auch abgespeichert. Das heißt nach einem Neustart ist das Fenster an der Stelle wie zuvor und auch mit der gleichen größe.
+-Icon wurde geändert.(Sieht jetzt um einiges besser aus!)  Es ist nun ein Icon das extra für dieses Tool erstellt wurde und somit sollten keine Rechte verletzt werden. Vielen liben dan an Jackob Winter der seine dienste auch Architekten für's Rendern anbietet.
+
+
+Gefundene Käfer...
+-Das die Sende und Empfangsdaten an den anschluss der Info gesetzt werden ist nicht mehr so
+-Das umschalten der Darstellung mit einem nicht gültigen Inhalt im Sende Fenster führte zum absturz. Nun nichtmehr! Damn you String Builder...
+-Einstellungen von älteren Versionen können nun geladen werden (Falls einestellungen nicht vorhanden sind werden sie mit gültigen einzel werten gefüllt)
+-Code aufgeräumt :-) Wurde ja auch Zeit
+
+---------------------------------
+v1.0.5
+---------------------------------
+Neue Funktionen...
+-Die Einstellungen wurden erweitert
+-Die Ansicht besitzt nun die möglichkeit die Daten mit Zeitstempel anzuzeigen
+-Der Zeitstempel ist nun für die Darstellung verfügbar
+-Die Ansicht Einstellungen werden nun auch gespeichert
+
+Gefundene Käfer...
+-Der Zeitstempel wurde bei empfangenen Daten nicht gesetzt.
+
+---------------------------------
+v1.0.4
+---------------------------------
+Neue Funktionen...
+-Die Hilfe wird nun aus der Anwendung heruas beim ersten benutzten in das Arbeitsverzeichniss geschrieben.
+-Ein ganz cooles Feature ist hinzugekommen. jetzt kann die Ansicht über die Pfeil Tasten geändert werden. Also mit Pfeiltaste Rechts/Links + SHIFT kann Zwischen ASCI Zeichen HEX, DEC und Binär gewchselt werden.
+-Die Kontaktdaten in der Infor wurden überarbeitet. Hier öffnet sich der standart Mail Client wenn die EMail angeklickt wird. :-)
+
+Gefundene Käfer...
+-Das Umschalten von Binären Daten in der Ansicht im Sende Fenster hat zum absturz geführt. Nun nicht mehr. :-)
+-Code aufgeräumt
+
+---------------------------------
+v1.0.3
+---------------------------------
+Neue Funktionen... Dank an S.H.
+-Durch eingabe von <hXX> ist es nun möglich direkt Byte Werte ind er ASCII Ansicht zu übertragen. Damit werden auch die Non ASCII Characters in diesem Format angezeigt
+-ToolBar eingebaut. Nun ist das Aufbauen und Trennen der Verbindung direkt aus der Toolbar möglich.
+-Die Sende Box Inhalte werden nun mit dem wechsel der Ansicht mit geändert
+
+Gefundene Käfer...
+-Wenn die Eingabe nicht zu der gewählten Ansicht kommt nun ein Dialog der auf den misstand hinweißt
+-Leere SendeBoxen führten zum Absturz wenn die Sende Historie über die Pfeiltasten hoch und runter durchsucht wurde. Nun nichtmehr
+
+---------------------------------
+v1.0.2
+---------------------------------
+Neue Funktionen...
+-Darstellungen der Fenster angepasst
+-Der Fenster Rahmen Text gibt nun wieder welche Verbindungseinstellungen gewählt wurden
+
+Gefundene Käfer... Danke an S.H.
+-Wird nun die verbindung gewechselt ohne die App zu beenden wird der verbindungsstatus ruhig und Sachlich den tatsächlichen zustand zeigen.
+-Bei dem wechsel der Vebindung wird versucht die bestehende verbindung zu trennen
+
+
+---------------------------------
+v1.0.1
+---------------------------------
+verbesserungen...
+-Abstand der Zeilen entfernt
+-Höhe der Send Daten Zeile erhöht
+
+---------------------------------
+v1.0.0
+---------------------------------
+-Release

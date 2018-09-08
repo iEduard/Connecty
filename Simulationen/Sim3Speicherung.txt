@@ -1,0 +1,7 @@
+#StartAblauf
+
+	Sende(Du Depp)
+	WarteAuf(Das klappt doch)
+	Sende(Ach Jaaaa...)
+
+#EndeAblauf

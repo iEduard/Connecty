@@ -1,0 +1,10 @@
+#StartAblauf
+
+	Sende(Du Depp)
+	WarteAuf(Das klappt doch)
+	Sende(Ach Jaaaa...)
+	WarteAuf(Bla)
+	Sende(Ahahaha)
+	WarteAuf(asdg dslkva)
+
+#EndeAblauf

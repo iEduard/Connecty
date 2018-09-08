@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="Connecty.QuickButtonsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Connecty"
+             mc:Ignorable="d" 
+             d:DesignHeight="20" d:DesignWidth="100">
+
+    <StackPanel Orientation="Horizontal">
+
+        <StackPanel Name="controlStackPanel" Orientation="Horizontal">
+            <Button Name="btAddQuickButton" 
+                    Click="AddQuickButton_Click">Quicky +</Button>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto">
+            <StackPanel Name="theMightyStackPanel" Orientation="Horizontal"/>
+        </ScrollViewer>
+    </StackPanel>
+</UserControl>

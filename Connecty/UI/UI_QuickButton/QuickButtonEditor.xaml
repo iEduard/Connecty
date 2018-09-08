@@ -1,0 +1,65 @@
+﻿<Window x:Class="Connecty.QuickButtonEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Quick Button hinzufügen" 
+        SizeToContent="WidthAndHeight"
+        Background="{DynamicResource MainBackground}" 
+        Icon="/Connecty;component/Resources/ConnectyIcon.ico" ResizeMode="NoResize"
+        Loaded="Window_Loaded">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="2">
+                    <Label Foreground="{DynamicResource MainForeground}">Name</Label>
+                    <TextBox Name="tbName" 
+                             HorizontalAlignment="Right" 
+                             TextAlignment="Left" 
+                             Height="23"  
+                             TextWrapping="NoWrap" 
+                             Width="100" 
+                             TextChanged="tbName_TextChanged">Name</TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="2">
+                    <Label Foreground="{DynamicResource MainForeground}">Inhalt</Label>
+                    <TextBox Name="tbData" 
+                             HorizontalAlignment="Right" 
+                             TextAlignment="Left"  
+                             TextWrapping="Wrap" 
+                             MaxWidth="500" 
+                             MinWidth="300" 
+                             MaxHeight="300">lorem Ipsum</TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="2">
+                    <Label Name="cbFunktionKeyLabel"
+                           Foreground="{DynamicResource MainForeground}">Function Key</Label>
+                    <ComboBox Name="cbFunktionKey"
+                              ItemsSource="{Binding FunktionKeyList}" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal"  >
+                <Button x:Name="bAccept"         
+                        IsDefault="True"
+                        Margin="5,0,5,5" 
+                        Content="Übernehmen" 
+                        HorizontalAlignment="Right" 
+                        Width="78"  
+                        Height="25" 
+                        VerticalAlignment="Bottom" 
+                        Click="btAccept_Click" 
+                        TabIndex="10"/>
+                <Button x:Name="bCancel"
+                        IsCancel="True"
+                        Margin="0,0,5,5" 
+                        Content="Abbrechen" 
+                        HorizontalAlignment="Right" 
+                        Width="78"  
+                        Height="25" 
+                        VerticalAlignment="Bottom" 
+                        Click="btAbbort_Click" 
+                        TabIndex="12"/>
+            </StackPanel>
+        </StackPanel>
+        
+    </Grid>
+</Window>

@@ -1,0 +1,240 @@
+﻿---------------------------------
+v1.8 
+---------------------------------
+Neue Funktionen...
+-Hilfedatei aktualisiert.
+
+Gefundene und behobene Käfer...
+-@MeMySelfAndI: Fenstertittel bei ein paar Fenstern aktualisiert.
+-@MeMySelfAndI: Die Speicher und öffnen Diealoge angepasst. Hier wurde der Dateityp filter eingebaut für die jeweiligen Datentypen die Standardmässig verwendet werden.
+
+---------------------------------
+v1.7 
+---------------------------------
+Gefundene und behobene Käfer...
+-@T.Düster, T.Ruh, und A.Kerler: Bei dem erneuten Verbindungsaufbau ohne vorherigem abbau wurden die Verbindungen nicht ganz beendet und wieder neu aufgebaut. Dies wurde behoben. Wenn verbindungen bestehen können diese nicht erneut verbunden werden.
+
+---------------------------------
+v1.6 
+---------------------------------
+Neue Funktionen...
+-@MeMySelfAndI: Im Update Fenster wird der Debug Download erst nach der Tastenkombination "STRG + D" Angezeigt bzw. einblendet.
+-@MeMySelfAndI: Beim Downloaden einer neuen Version wird der aktuelle Sopeicherort der laufenden Anwendung eingetragen.
+-@MeMySelfAndI: Beim Downloaden einer neuen Version wird der Dateiname vorbelegt mit der aktuellen Versionsnummer.
+-@MeMySelfAndI: Im Hauptfenster wird nun bei einer bestehenden Internet Verbindung ob eine neue Release version von Connety verfügbar ist. Und kann hier direkt heruntergeladen werden.
+
+Gefundene und behobene Käfer...
+-@Z.Peimann: Sollte das Speichern der Datei nicht funktionieren wird dies nun mittels einem Dialog mitgeteilt.
+
+---------------------------------
+v1.5 
+---------------------------------
+Neue Funktionen...
+-Themes eingebaut. Jetzt gibt es ein Helles und ein Dunkeles Theme. Kann über die Applikationseinstellungen angepasst werden.
+-@A.Kerler: Die Zoom Stufe kann nun auch über die CTR und +/- tastenkombination verändert werden.
+-@T.Düster: Die Darstellung der Sonderzeichen angepasst. Diese können nun in den Einstellungen angepasst werden mit Farbänderung, Kursiv und Fett.
+-@MeMySelfAndI: Die Simulationsfenster lassen sich nun auch über das Menü direkt mit einer Vorlage öffnen. Damit spart man sich erst das öffnen der Simulation und dann das auswählen von vorhandene Simulation öffnen. 
+	Ist mir selber auf den Keks gegangen und wurde geändert.
+-@MeMySelfAndI: Das Log Fenster kann jetzt über die Ablage als TXT Datei gespeichert werden.
+-@MeMySelfAndI: Das Updatefenster aktualisiert. Es wird nun angezeigt ob die Versionen abgerufen werden oder nicht...
+
+Gefundene und behobene Käfer...
+-Die Positionen der Fenster werden nun mit bezug zu dem Windows Skalierungsfaktor erstellt. Damit sollte bei aktiver Skalierung neue Fenster nicht im Nirvana landen. 
+-Die "Einstellungen" UI überarbeitet.
+-Die Information an welche Verbindung bei der Verbindungsbrücke gesendet wurde war falsch im Msg Log jetzt nichtmehr.
+-Am Pm von der Darstellung entfernt
+-@T.Ruh: Der Hintergrund in der Statusleiste für den Verbindungsaufbau wurde angepasts. hatte unter dem Dark mode nicht ganz funktioniert.
+
+---------------------------------
+v1.4 Für die Brillen träger...
+---------------------------------
+Neue Funktionen...
+-@E.Küchler: Zoomen des Datenfensters ist nun möglich über das => "Menü/Optionen/Ansicht/Zoom" oder aber über CTR + Mouse Wheel. Mit Ctr + Mouse Wheel Click wird die UI wieder auf 100% gesetzt.
+-Release Notes im Updater eingebaut
+
+Gefundene und behobene Käfer...
+-@T.Düster: Downlaod wurde zu => Herunterlaaden
+
+---------------------------------
+v1.3
+---------------------------------
+Neue Funktionen...
+
+Gefundene und behobene Käfer...
+-Die Versionsnummern sind jetzt angepasst. Da die letzte Nummer nur die Zeit seit Mitternacht in Sekunden angibt... Die vorletzte nummer wird jeden Tag Inkrementiert...
+
+---------------------------------
+v1.2 Merry Christmas
+---------------------------------
+Neue Funktionen...
+-Eine kleine Anzeige hilft jetzt um auf einen blick herauszufinden ob es eine Neue version gibt oder nicht.
+
+
+Gefundene und behobene Käfer...
+-@E.Küchler: Das Update Fenster wird nicht auf irgendeinem Fenster aufgemacht sondern da wo der Connecty ist. 
+
+---------------------------------
+v1.2.0
+---------------------------------
+Neue Funktionen...
+-Update Helfer eingebaut. Im Menü Hilfe kann nun nach den Aktuellen Versionen gesucht werden und die jeweilige Version Heruntergeladen werden
+
+---------------------------------
+v1.1.1
+---------------------------------
+Neue Funktionen...
+-ASCII Sonderzeiochen werden nun in der ASCII Darstellung BOLD dargestellt.
+
+Gefundene und behobene Käfer...
+-Code aufgeräumt und IDisposable eingebaut...
+-@Tobias Düster: Der Zeitstempel für die ANchrichten ist nun im 24 Stunden format! Danke an den hinweis
+-Sollte Connecty auf einem Bildschirm geöffnet gewesen sein der nicht mehr vorhanden ist bei dem Neustart wird die Position des Fensters nun auf den Vorhandenn Hauptbildschirm korregiert.
+
+---------------------------------
+v1.1.0 Die Edgar Version PS.: Happy Birth Day
+---------------------------------
+Neue Funktionen...
+-Schnell Tasten für Text Snippets die Frei konfiguriert werden können eingebaut. Diese können erstellt geladen und gespeichert werden
+	-Die Letzte Datei der Quickbuttons wird Automatisch geladen
+	-Quickbuttons können gespeichert oder gespeichert unter werden... der zuletzt gespeicherte Ort wird gemerkt und bei einem neustart geladen falls noch vorhanden.
+-Auf .Net 4.0 Compiliert 
+
+Gefundene und behobene Käfer...
+-Das Tastenkürzel für das löschen der MSG History wurde nun repariert. Danke an Stefan Huildebrand für den Bug... (Tastenkürzel ist nun "STRG + L")
+-Die Verbindungsbrücke hatte ein Problem bei der übernahme der einstellung mit RS232 und TCP IP. Dies wurde behoben. Dank an S.Hildebrand
+-Bei Simulationsfenstern die kleiner sind als die Liste der Simulationen kam es zum absturz. Wurde behoben. Dank an T.Düster
+-Bei den QuickButtons kommt es nun bei dem "Speichern" in der Menüleiste bei nicht mehr Existierendem Verzeichniss nun nicht mehr zum Absturz.
+-Die UI der QuickButtons wurde überarbeitet da die geladenen Buttons anders aussahen als die erstellten Buttons
+
+---------------------------------
+v1.0.9
+---------------------------------
+Neue Funktionen...
+-Die Applikationseinstellungen sind nun über das Menü/Optionen/Einstellungen verfügbar. Hier können nun Applikations Einstellungen verändert werden.
+	-Anzahl der Telegramm im Ringpuffer für das Log
+	-Anzahöl der SendeTelegramme für die Histprie
+	-DebugModus ist nun hier verfügbar
+-Das reicht erst einmal mit den neuen Funktionen. jetzt werden die bestehenden ert einmal auf vordermann gebracht.
+
+Anpassungen
+-Und Schon wieder wurdenn die UI der Einstellungen überarbeitet. Mit den Tabs war es nicht ganz ersichtlich was mann eingestellt hat.
+-Kleinere Design anpassungen
+
+Gefundene und behobene Käfer...
+-Der Email Link im Info Dialog führt nun nicht zum absturz der Applikation wenn kein standard EMail Client festgelegt/forhanden ist.
+-Simulationsfenster
+	-Die Jobs können nun nicht mehr fälschlicherweise nach Jobs sortiert werden
+	-Das Editieren der Jobs wird nun automatisch beendet und übernommen wenn die Simulation gestartet oder gespeichert wird.
+-Verbindungseinstellungen
+	-RS232 Settings: Bei fehlerhaften Einträgen ist das Programm abgestürzt
+	-Schnüffler: Ungültige Eingaben führten zum Absturz des Programms
+	-Bei der überprüfung der Daten wird nun sauber gearbeitet. So das wir nicht dauernd in eine Exception reinlaufen wenn falsche Daten enthalten sind oder die Ansicht neu geladen wird
+	-Der Code wurde optimiert. Jetzt werden keine Exeptions mehr ausgelößt wenn das Fenster geöffnet wird
+
+---------------------------------
+v1.0.8
+---------------------------------
+Neue Funktionen...
+-Simulation hinzugefügt. Ja die Simulation ist jetzt Teil von Connecty.. Juhu...
+-Hilfedatei aktualisiert
+
+Gefundene Käfer...
+-Die UI der Verbindungseinstellungen wurde überarbeitet. Hier sollte es nun etwas besser laufen.
+-Das Ändern der Verbindungseinstellungen wird nun untersagt wenn eine Verbindung bereits aufgebaut ist.
+
+---------------------------------
+v1.0.7
+---------------------------------
+Neue Funktionen...
+-
+
+Gefundene Käfer...
+-Die Verbindungen von Seriellen Verbindung lief nicht ganz reibungslos... (Es wurden die Daten nicht an das Log Fenster weitergeleitet)
+-Fenster Position und größe bei fehlenden Default Einstellungen wurde nicht sauber Initialisiert. Nun werden die größe und die Position sinvoll vorgegeben.
+
+---------------------------------
+v1.0.6
+---------------------------------
+Neue Funktionen...
+-Short Cuts eingebunden. Für das Verbinden Trennen Löschen und so weiter
+-Das ändern der Ansicht geht nun sobald das Fenster angewählt ist über die Tastenkombination ALT+Pfeiltasten links und rechts
+-Die Einstellungen lassen sich nun auch speichern bzw. laden. (Dank an E.Küchler)
+-Sende und Empfangs Farben können nun über eine kleine Farbauswahl eingestellt werden
+-TCP verbindungen können nun Automatisch wieder verbunden werden
+-Komplettes neu Design des Parameter Fensters für die Verbindungseinstellungen...
+	-Vorbereitung für Connecty in the Middle und dem Simulanten
+	-Die EIngabefelder mit ungültigen Eingaben werden nun Rot hinterlegt
+	-Der Tabulator kann nun verwendet werden umm alles mit der Tastatur zu steuern
+	-Die Tasten ESC und ENTER können nun genutzt werden um den Dialog zu Schließen bzw. die EIngabe zu übernehmen
+-Tool Tips der ToolBar geben nun auch Aufschluss über den dahinter liegenden ShortCut
+-Die Menüfenster werden nun immer über dem jeweiligen Connecty Fenster Positioniert.
+-Die Connecty in the Middle Funktion implementiert. Jetzt kann Connecty als Zwischenstück zwischen zwei Verbindungen genutzt werden.
+-Die größe des Fensters sowie die Position des Fensters werdennun auch abgespeichert. Das heißt nach einem Neustart ist das Fenster an der Stelle wie zuvor und auch mit der gleichen größe.
+-Icon wurde geändert.(Sieht jetzt um einiges besser aus!)  Es ist nun ein Icon das extra für dieses Tool erstellt wurde und somit sollten keine Rechte verletzt werden. Vielen liben dan an Jackob Winter der seine dienste auch Architekten für's Rendern anbietet.
+
+
+Gefundene Käfer...
+-Das die Sende und Empfangsdaten an den anschluss der Info gesetzt werden ist nicht mehr so
+-Das umschalten der Darstellung mit einem nicht gültigen Inhalt im Sende Fenster führte zum absturz. Nun nichtmehr! Damn you String Builder...
+-Einstellungen von älteren Versionen können nun geladen werden (Falls einestellungen nicht vorhanden sind werden sie mit gültigen einzel werten gefüllt)
+-Code aufgeräumt :-) Wurde ja auch Zeit
+
+---------------------------------
+v1.0.5
+---------------------------------
+Neue Funktionen...
+-Die Einstellungen wurden erweitert
+-Die Ansicht besitzt nun die möglichkeit die Daten mit Zeitstempel anzuzeigen
+-Der Zeitstempel ist nun für die Darstellung verfügbar
+-Die Ansicht Einstellungen werden nun auch gespeichert
+
+Gefundene Käfer...
+-Der Zeitstempel wurde bei empfangenen Daten nicht gesetzt.
+
+---------------------------------
+v1.0.4
+---------------------------------
+Neue Funktionen...
+-Die Hilfe wird nun aus der Anwendung heruas beim ersten benutzten in das Arbeitsverzeichniss geschrieben.
+-Ein ganz cooles Feature ist hinzugekommen. jetzt kann die Ansicht über die Pfeil Tasten geändert werden. Also mit Pfeiltaste Rechts/Links + SHIFT kann Zwischen ASCI Zeichen HEX, DEC und Binär gewchselt werden.
+-Die Kontaktdaten in der Infor wurden überarbeitet. Hier öffnet sich der standart Mail Client wenn die EMail angeklickt wird. :-)
+
+Gefundene Käfer...
+-Das Umschalten von Binären Daten in der Ansicht im Sende Fenster hat zum absturz geführt. Nun nicht mehr. :-)
+-Code aufgeräumt
+
+---------------------------------
+v1.0.3
+---------------------------------
+Neue Funktionen... Dank an S.H.
+-Durch eingabe von <hXX> ist es nun möglich direkt Byte Werte ind er ASCII Ansicht zu übertragen. Damit werden auch die Non ASCII Characters in diesem Format angezeigt
+-ToolBar eingebaut. Nun ist das Aufbauen und Trennen der Verbindung direkt aus der Toolbar möglich.
+-Die Sende Box Inhalte werden nun mit dem wechsel der Ansicht mit geändert
+
+Gefundene Käfer...
+-Wenn die Eingabe nicht zu der gewählten Ansicht kommt nun ein Dialog der auf den misstand hinweißt
+-Leere SendeBoxen führten zum Absturz wenn die Sende Historie über die Pfeiltasten hoch und runter durchsucht wurde. Nun nichtmehr
+
+---------------------------------
+v1.0.2
+---------------------------------
+Neue Funktionen...
+-Darstellungen der Fenster angepasst
+-Der Fenster Rahmen Text gibt nun wieder welche Verbindungseinstellungen gewählt wurden
+
+Gefundene Käfer... Danke an S.H.
+-Wird nun die verbindung gewechselt ohne die App zu beenden wird der verbindungsstatus ruhig und Sachlich den tatsächlichen zustand zeigen.
+-Bei dem wechsel der Vebindung wird versucht die bestehende verbindung zu trennen
+
+
+---------------------------------
+v1.0.1
+---------------------------------
+verbesserungen...
+-Abstand der Zeilen entfernt
+-Höhe der Send Daten Zeile erhöht
+
+---------------------------------
+v1.0.0
+---------------------------------
+-Release

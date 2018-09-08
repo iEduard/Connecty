@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<VersionInfo>
+  <Binary Name="Release">
+    <Mayor>1</Mayor>
+    <Minor>7</Minor>
+    <Revision>6717</Revision>
+    <Build>31878</Build>
+  </Binary>
+  <Binary Name="Debug">
+    <Mayor>1</Mayor>
+    <Minor>8</Minor>
+    <Revision>6766</Revision>
+    <Build>35784</Build>
+  </Binary>
+</VersionInfo>

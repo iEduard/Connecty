@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="MainForeground" Color="White" />
+    <SolidColorBrush x:Key="MainBackground" Color="#FF404040" />
+
+    <!-- MenuItem -->
+    <SolidColorBrush x:Key="MenuForeground" Color="White" />
+    <SolidColorBrush x:Key="MenuBackground" Color="#FF202020" />
+    <SolidColorBrush x:Key="MenuHighlightColor" Color="DarkGray" />
+    
+    <!-- TextBox -->
+    <SolidColorBrush x:Key="TextBoxBackground" Color="#FF292929" />
+    <SolidColorBrush x:Key="TextBoxForeground" Color="White" />
+    <SolidColorBrush x:Key="TextBoxBorderBrush" Color="LightGray" />
+    <SolidColorBrush x:Key="TextBoxHighlightColorBackground" Color="#FF202020" />
+    <SolidColorBrush x:Key="TextBoxHighlightColorBorderBrush" Color="DarkGray" />
+
+    <!-- Button -->
+    <SolidColorBrush x:Key="ButtonBackground" Color="#FF404040" />
+    <SolidColorBrush x:Key="ButtonForeground" Color="White" />
+    <SolidColorBrush x:Key="ButtonBorderBrush" Color="#FF404040" />
+    <SolidColorBrush x:Key="ButtonHighlightColor" Color="DarkGray" />
+
+</ResourceDictionary>

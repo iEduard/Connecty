@@ -1,0 +1,65 @@
+﻿<Window x:Class="Connecty.ConnectionSettings_UI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Connecty"
+        mc:Ignorable="d"
+        Title="Verbindungseinstellungen" 
+        SizeToContent="WidthAndHeight"
+        WindowStyle="ToolWindow" 
+        ResizeMode="NoResize"
+        Icon="/Connecty;component/Resources/ConnectyIcon.ico"
+        KeyDown="Window_KeyDown">
+    <Grid>
+
+        <DockPanel Background="LightGray" LastChildFill="False" Margin="0,0,0,0">
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" DockPanel.Dock="Bottom" Margin="0,20,0,0">
+                <Button     x:Name="bAccept" 
+                            Margin="5,0,5,5" 
+                            Content="Übernehmen" 
+                            HorizontalAlignment="Right" 
+                            Width="78"  
+                            Height="25" 
+                            VerticalAlignment="Bottom" 
+                            Click="bAccept_Click" TabIndex="10"/>
+                <Button     x:Name="bCancel" 
+                            Margin="0,0,5,5" 
+                            Content="Abbrechen" 
+                            HorizontalAlignment="Right" 
+                            Width="78"  
+                            Height="25" 
+                            VerticalAlignment="Bottom" 
+                            Click="bCancel_Click" TabIndex="12"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Top">
+                <TabControl Name="ConectionSettingTabControl" TabStripPlacement="Left">
+                    <TabItem Header="Einfache Verbindung">
+                        <StackPanel DockPanel.Dock="Top">
+                            <Border Name="BoarderSettingsContenFrame1" CornerRadius="0" BorderBrush="LightGray" BorderThickness="1">
+                                <Frame Name="SingleConnectionContentFrame" 
+                                       DockPanel.Dock="Left" 
+                                       Source="settingsPageConnection.xaml" 
+                                       NavigationUIVisibility="Hidden" 
+                                       IsTabStop="False" 
+                                       TabIndex="2" 
+                                       Margin="0,5,0,0"/>
+                            </Border>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="Schnüffler">
+                        <StackPanel DockPanel.Dock="Top">
+                            <Frame Name="ConnectyInTheMiddleContentFrame" 
+                                   DockPanel.Dock="Left" 
+                                   Source="settingsPageConnectyInTheMiddle.xaml" 
+                                   NavigationUIVisibility="Hidden" 
+                                   IsTabStop="False" 
+                                   TabIndex="2"/>
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+
+        </DockPanel>
+    </Grid>
+</Window>

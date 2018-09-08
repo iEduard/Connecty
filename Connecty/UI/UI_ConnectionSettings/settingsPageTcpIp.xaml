@@ -1,0 +1,43 @@
+﻿<Page x:Class="Connecty.settingsPageTcpIp"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Connecty"
+      mc:Ignorable="d"
+      Title="settingsPageTcpIp" Width="240" Height="175">
+
+
+    <Grid Background="Transparent">
+        <StackPanel >
+            <StackPanel Margin="0,4,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Verbindung" 
+                       Foreground="{DynamicResource MainForeground}"/>
+                <ComboBox x:Name="cbClientServerSelect" HorizontalAlignment="Right" Width="80" SelectionChanged="cbClientServerSelect_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Margin="0,4,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Port" 
+                       Foreground="{DynamicResource MainForeground}"/>
+                <TextBox x:Name="tbTcpIpPort" HorizontalAlignment="Right" Height="28"  TextWrapping="Wrap" Width="80" TextChanged="userInputTextChanged"/>
+            </StackPanel>
+            <StackPanel Margin="0,4,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="IP Adresse" 
+                       Foreground="{DynamicResource MainForeground}"/>
+                <TextBox x:Name="tbTcpIpAddress" HorizontalAlignment="Right" Height="28"  TextWrapping="Wrap" Width="100" TextChanged="userInputTextChanged"/>
+            </StackPanel>
+            <StackPanel Margin="0,4,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Automatischer Wiederaufbau"
+                       Foreground="{DynamicResource MainForeground}"/>
+                <CheckBox Name="cbTcpAutomaticReconnect" Margin="0,7,0,0"/>
+            </StackPanel>
+            <StackPanel x:Name="expertUI">
+                <StackPanel Margin="0,4,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Content="Zeichenverzugszeit [ms]" 
+                           Foreground="{DynamicResource MainForeground}"/>
+                    <TextBox x:Name="tbReciveTimeOut" HorizontalAlignment="Right" Height="28"  TextWrapping="Wrap" Width="80" TextChanged="tbReciveTimeOut_TextChanged"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Page>
