@@ -41,6 +41,10 @@ namespace Connecty
                     pcSerialPort.Close();
                 }
             }
+            else
+            {
+                pcSerialPort = new SerialPort();
+            }
 
 
             // Open the Serial Port
@@ -106,6 +110,8 @@ namespace Connecty
                     msgLogEventArgs.msgData = logMessage;
                     msgSendRecived(msgLogEventArgs);
 
+                    pcSerialPort.Dispose();
+                    pcSerialPort = null;
                 }
             }
         }

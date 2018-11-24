@@ -1,4 +1,22 @@
 ﻿---------------------------------
+v1.9.1
+---------------------------------
+Neue Funktionen...
+-Keine
+
+
+Gefundene und behobene Käfer...
+-Das schließen und wieder öffnen von Seriellen Verbindungen führt zu einem Absturz. Nun wird alles sauber abgelöscht und führt nicht mehr zum einfrieren des Connectys
+
+
+
+---------------------------------
+v1.9 
+---------------------------------
+Neue Funktionen...
+-Moved to Git 
+
+---------------------------------
 v1.8 
 ---------------------------------
 Neue Funktionen...
