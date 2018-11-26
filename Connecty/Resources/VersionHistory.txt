@@ -1,14 +1,16 @@
 ﻿---------------------------------
-v1.9.1
+v1.10
 ---------------------------------
 Neue Funktionen...
 -Keine
 
-
 Gefundene und behobene Käfer...
 -Das schließen und wieder öffnen von Seriellen Verbindungen führt zu einem Absturz. Nun wird alles sauber abgelöscht und führt nicht mehr zum einfrieren des Connectys
-
-
+-Die Default einstellungen angepasst.
+	-Die Start Farben für das Senden und emfpangen angepasst
+	-Startwerte der Seriellen Verbindung sind nun ohne Parität
+	-Die Darstellung von Sonderzeichen ist nun mikt Farb wechsel und kursiv
+	-Der Zeitstempel ist nun Standardmäßig ein
 
 ---------------------------------
 v1.9 

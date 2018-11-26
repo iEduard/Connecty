@@ -2,14 +2,14 @@
 <VersionInfo>
   <Binary Name="Release">
     <Mayor>1</Mayor>
-    <Minor>7</Minor>
-    <Revision>6717</Revision>
-    <Build>31878</Build>
+    <Minor>10</Minor>
+    <Revision>6904</Revision>
+    <Build>17298</Build>
   </Binary>
   <Binary Name="Debug">
     <Mayor>1</Mayor>
-    <Minor>8</Minor>
-    <Revision>6902</Revision>
-    <Build>37469</Build>
+    <Minor>10</Minor>
+    <Revision>6904</Revision>
+    <Build>17224</Build>
   </Binary>
 </VersionInfo>

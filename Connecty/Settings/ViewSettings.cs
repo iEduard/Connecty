@@ -32,78 +32,12 @@ namespace Connecty
         /// </summary>
         public ViewSettings()
         {
-            showTimeStamp = false;
-            dataPresentation = 0; // Default show the ASCII Signs
-            sendColor = Brushes.Blue.Color;
-            receiveColor = Brushes.Magenta.Color;
+            this.showTimeStamp = true;
+            this.dataPresentation = 0; // Default show the ASCII Signs
+            this.sendColor = Brushes.LightGreen.Color;
+            this.receiveColor = Brushes.Yellow.Color;
 
         }
-
-
-        /// <summary>
-        /// Change the Color of the Current view
-        /// </summary>
-        /// <param name="currentColor"></param>
-        /// <returns></returns>
-        public void changeSendReciveColor(int snedReceiveSelect)
-        {
-            Color currentColor;
-
-            // Get the Current Color
-            if (snedReceiveSelect == 1)
-            {
-                currentColor = sendColor;
-
-            }
-            else
-            {
-                currentColor = receiveColor;
-            }
-
-
-            if (currentColor == Colors.DarkBlue)
-            {
-                currentColor = Colors.DarkCyan;
-            }
-            else if (currentColor == Colors.DarkCyan)
-            {
-                currentColor = Colors.DarkGreen;
-            }
-            else if (currentColor == Colors.DarkGreen)
-            {
-                currentColor = Colors.DarkKhaki;
-            }
-            else if (currentColor == Colors.DarkKhaki)
-            {
-                currentColor = Colors.DarkMagenta;
-            }
-            else if (currentColor == Colors.DarkMagenta)
-            {
-                currentColor = Colors.DarkOrange;
-            }
-            else if (currentColor == Colors.DarkOrange)
-            {
-                currentColor = Colors.DarkRed;
-            }
-            else
-            {
-                currentColor = Colors.DarkBlue;
-            }
-
-
-            // Set the Color the the actual requested Settings Value
-            if (snedReceiveSelect == 1)
-            {
-                sendColor = currentColor;
-
-            }
-            else
-            {
-                receiveColor = currentColor;
-            }
-
-        }
-
 
 
         /// <summary>

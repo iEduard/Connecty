@@ -30,24 +30,24 @@ namespace Connecty
         /// </summary>
         public ApplicationSettings()
         {
-            msgLogRingBufferSize = 4096;
-            sendHistorySize = 20;
+            this.msgLogRingBufferSize = 4096;
+            this.sendHistorySize = 20;
 
-            debugModeIsActive = false;
+            this.debugModeIsActive = false;
 
-            position = new Point(50, 50);
-            height = 500;
-            width = 600;
+            this.position = new Point(50, 50);
+            this.height = 500;
+            this.width = 600;
 
-            lastQuickButtonsPath = "c:\\";
+            this.lastQuickButtonsPath = "c:\\";
 
-            msgLogZoomFactor = 1;
+            this.msgLogZoomFactor = 1;
 
             // UI Representation
-            uiTheme = "dark";
-            uiSpecialCharSetBold = false;
-            uiSpecialCharSetItalic = true;
-
+            this.uiTheme = "dark";
+            this.uiSpecialCharSetBold = false;
+            this.uiSpecialCharSetItalic = true;
+            this.uiSpecialCharSetColorChange = true;
         }
 
         /// <summary>

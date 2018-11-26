@@ -29,7 +29,7 @@ namespace Connecty
             baud = 19200;        // Set the Baudrate to 9600
             dataBits = 8;       // Set the DataBits to 8
             stopBits = System.IO.Ports.StopBits.One;      // Set the StopBits to 1
-            parity = System.IO.Ports.Parity.Odd;         // Set the Default Parity to None
+            parity = System.IO.Ports.Parity.None;         // Set the Default Parity to None
             readTimeOut  = 200;   // Set the Default Read Timeout to 200ms
             
         }
