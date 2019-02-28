@@ -377,7 +377,7 @@ namespace Connecty
             // Get XML File with the Version Description from: But we have to change the dl=0 to dl=1 to direkt Download the File...
             // https://www.dropbox.com/s/6uf6d3w4cews3rh/VersionInfo.xml?dl=0
 
-            string _filePath = "https://www.dropbox.com/s/6uf6d3w4cews3rh/VersionInfo.xml?dl=1";
+            string _filePath = "https://www.dropbox.com/s/v7flhr7s83l2t0h/VersionInfo.xml?dl=1";
             //string _filePath = "C:\\Users\\Eduard Schmidt\\Dropbox\\VisualStudio Projects\\Connecty\\VersionInfo.xml";
             XmlDocument _xmlDocument = new XmlDocument();
 

@@ -292,16 +292,29 @@ namespace Connecty
             if (tcpClient.Connected)
             {
                 NetworkStream clientStream = tcpClient.GetStream();
-                clientStream.Write(message.value, 0, message.value.Length);
-                clientStream.Flush();
+                try
+                {
+                    clientStream.Write(message.value, 0, message.value.Length);
+                    clientStream.Flush();
 
-                message.setCurrentTimeStamp();// Set the Time Stamp
-                message.connectionNumber = interfaceNumber;// Set the reference to the Interface
+                    message.setCurrentTimeStamp();// Set the Time Stamp
+                    message.connectionNumber = interfaceNumber;// Set the reference to the Interface
 
-                // Set the Event that the User Changed an Input
-                MsgSendRecivedEventArgs msgLogEventArgs = new MsgSendRecivedEventArgs();
-                msgLogEventArgs.msgData = message;
-                msgSendRecived(msgLogEventArgs);
+                    // Set the Event that the User Changed an Input
+                    MsgSendRecivedEventArgs msgLogEventArgs = new MsgSendRecivedEventArgs();
+                    msgLogEventArgs.msgData = message;
+                    msgSendRecived(msgLogEventArgs);
+
+                }
+                catch
+                {
+
+                    updateUi("Data could not be send.", MsgData.messageType.infoNegative);
+
+                }
+
+
+
             }
 
         }

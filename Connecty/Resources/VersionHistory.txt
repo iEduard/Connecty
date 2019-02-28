@@ -1,4 +1,14 @@
 ﻿---------------------------------
+v1.11
+---------------------------------
+Neue Funktionen...
+-Keine
+
+Gefundene und behobene Käfer...
+-Sollte bei der Verbindungsbrücke einer der teilnehmer die Verbindung beenden während der andere Teilnehmer was sendet wurde eine Exception ausgelöst und connecty beendet. Dies wurde behoben.
+-Der Dropbox link wurde aktualisiert damit sollte die Update funktktion wieder funktionieren
+
+---------------------------------
 v1.10
 ---------------------------------
 Neue Funktionen...
