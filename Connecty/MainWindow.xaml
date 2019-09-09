@@ -5,7 +5,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:l="clr-namespace:UIControls;assembly=UIControls"
         Title="Connecty" Height="340.744" 
-        Width="502.331" Icon="Resources/ConnectyIcon.ico" 
+        Width="536.793" Icon="Resources/ConnectyIcon.ico" 
         MinWidth="380" MinHeight="200" 
         Closing="Window_Closing" 
         Background="{DynamicResource MainBackground}" 

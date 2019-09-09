@@ -82,7 +82,6 @@ namespace Connecty
             Button _button = sender as Button;
             int _sendReciveSelection = (Int32)_button.Resources["SendReciveSelection"];
 
-
             // Get the Visual Element
             ContentControl _visualElement = sender as ContentControl;
             
