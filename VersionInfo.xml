@@ -3,13 +3,13 @@
   <Binary Name="Release">
     <Mayor>1</Mayor>
     <Minor>11</Minor>
-    <Revision>6998</Revision>
-    <Build>38828</Build>
+    <Revision>7185</Revision>
+    <Build>19787</Build>
   </Binary>
   <Binary Name="Debug">
     <Mayor>1</Mayor>
     <Minor>11</Minor>
-    <Revision>7088</Revision>
-    <Build>21583</Build>
+    <Revision>7065</Revision>
+    <Build>25153</Build>
   </Binary>
 </VersionInfo>
